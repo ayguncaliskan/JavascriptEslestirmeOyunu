@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Index</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script>
+      $(function(){
+ 
+         $.background = function(){
+   
+             var width = $(window).width();
+             var height = $(window).height();
+             $("img.background").css({
+                
+               "width" : width + "px",
+               "height" : height + "px"
+                
+             });
+            
+         }
+ 
+         $.background();
+ 
+ 
+         var page_height = $(window).height();
+ 
+         $(".butonlar").css("line-height", page_height + "px");
+ 
+      });
+   </script>
+   <style>
+ 
+      body {
+        margin: auto
+      }
+ 
+      .background {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+ 
+      .butonlar {
+         text-align: center;
+      }
+
+      .button {
+
+display: inline-block;
+
+padding: 15px 25px;
+margin: 50px;
+font-size: 50px;
+font-weight: bold;
+cursor: pointer;
+
+text-align: center;
+
+text-decoration: none;
+
+outline: none;
+
+color: #fff;
+
+background-color:#f4511e;
+
+border: none;
+
+border-radius: 15px;
+
+box-shadow: 0 20px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+
+background-color: #3e8e41;
+
+box-shadow: 0 5px #666;
+
+transform: translateY(4px);
+}
+
+   </style>
+</head>
+<body>
+   <img src="anasayfa1.png" alt="" class="background" />
+   <div class="butonlar">
+     
+      <a href="Kolay.html"><button class="button">KOLAY</button> </a>
+      <a href="Orta.html"><button class="button">ORTA </button> </a>
+      <a href="Zor.html"><button class="button">ZOR  </button> </a>
+   </div>
+</body>
+</html>

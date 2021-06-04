@@ -4,10 +4,13 @@ const deste = document.querySelector(".deste");
 let opened = [];
 let matched = [];
 const modal = document.getElementById("modal");
+const modal2 = document.getElementById("modal2");
+
 const sıfırla = document.querySelector(".sıfırla-btn");
 const yenidenOyna = document.querySelector(".play-again-btn");
+const yenidenOyna2 = document.querySelector(".play-again-btn2");
 const hamleCount = document.querySelector(".hamle-sayac");
-const scoreCount = document.querySelector(".score-counter");
+const scoreCount = document.querySelector(".skor-sayac");
 let hamle = 0;
 let score=  0;
 const star = document.getElementById("star-rating").querySelectorAll(".star");
@@ -19,6 +22,8 @@ let dakika = 0;
 let timeStart = false;
 var dogru = new Audio('sounds/tik.mp3');
 var yanlis = new Audio('sounds/yanlis.mp3');
+var tebrik = new Audio('sounds/alkis.mp3');
+var uzgun = new Audio('sounds/huzun.mp3');
 function shuffle(array) {
 let currentIndex = array.length, temporaryValue, randomIndex;
 while (currentIndex !== 0) {
@@ -32,7 +37,7 @@ return array;
 }
 function OyunaBasla() {
 
-const shuffleddeste = shuffle(desteCards); 
+const shuffleddeste = shuffle(desteCards);
 
 for (let i = 0; i < shuffleddeste.length; i++) {
 
@@ -78,7 +83,10 @@ function stopTime() {
 clearInterval(time);
 }
 function sıfırlatop() {
-
+// hamleCount.innerHTML = 0;
+// scoreCount.innerHTML=0;
+// removeCard();
+OyunaBasla();
 stopTime();
 timeStart = false;
 saniye = 0;
@@ -99,7 +107,7 @@ opened = [];
 
 removeCard();
 
-OyunaBasla();
+// OyunaBasla();
 }
 function hamleSayac() {
 
@@ -114,12 +122,12 @@ scoreCount.innerHTML =score+10;
 score +=10;
 }
 function starRating() {
-if (hamle === 14) {
+if (hamle === 22) {
 
 star[2].firstElementChild.classList.remove("fa-star");
 starCount--;
 }
-if (hamle === 18) {
+if (hamle === 24) {
 star[1].firstElementChild.classList.remove("fa-star");
 starCount--;
 }
@@ -183,6 +191,7 @@ function AddStats() {
 
 const stats = document.querySelector(".modal-content");
 
+
 for (let i = 1; i <= 4; i++) {
 
 const statsElement = document.createElement("p");
@@ -199,6 +208,27 @@ p[1].innerHTML = "Hamle Sayısı: " + hamle;
 p[2].innerHTML = "Sizin yıldız sayınız 3 üzerinden: "+ starCount ;
 p[3].innerHTML=  "Toplam skorunuz: "+ score;
 }
+function AddStats2() {
+
+  const stats2 = document.querySelector(".modal2-content");
+
+
+  for (let i = 1; i <= 4; i++) {
+
+  const stats2Element = document.createElement("p");
+
+  stats2Element.classList.add("stats2");
+
+  stats2.appendChild(stats2Element);
+  }
+
+  let p2 = stats2.querySelectorAll("p.stats2");
+
+  p2[0].innerHTML = "Tamamlama Süreniz: " + dakika + " Dakika " + saniye + " Saniye";
+  p2[1].innerHTML = "Hamle Sayısı: " + hamle;
+  p2[2].innerHTML = "Sizin yıldız sayınız 3 üzerinden: "+ starCount ;
+  p2[3].innerHTML=  "Toplam skorunuz: "+ score;
+  }
 function displayModal() {
 
 const modalClose = document.getElementsByClassName("close")[0];
@@ -215,17 +245,34 @@ modal.style.display = "none";
 }
 };
 }
+function displayModal2() {
+
+  const modalClose2 = document.getElementsByClassName("close2")[0];
+
+  modal2.style.display= "block";
+
+  modalClose2.onclick = function() {
+  modal2.style.display = "none";
+  };
+
+  window.onclick = function(event) {
+  if (event.target == modal2) {
+  modal2.style.display = "none";
+  }
+  };
+  }
 function sureBitti(){
 stopTime();
-AddStats();
-displayModal();
-
+AddStats2();
+displayModal2();
+uzgun.play();
 }
 function oyunKazan() {
 if (matched.length === 20) {
 stopTime();
 AddStats();
 displayModal();
+tebrik.play();
 }
 }
 deste.addEventListener("click", function(evt) {
@@ -234,7 +281,7 @@ if (evt.target.nodeName === "LI") {
 console.log(evt.target.nodeName + " Was clicked");
 
 if (timeStart === false) {
-timeStart = true; 
+timeStart = true;
 timer();
 }
 
@@ -262,5 +309,11 @@ Karsilastir();
 sıfırla.addEventListener('click', sıfırlatop);
 yenidenOyna.addEventListener('click',function() {
 modal.style.display = "none";
+modal2.style.display = "none";
+sıfırlatop();
+});
+yenidenOyna2.addEventListener('click',function() {
+modal.style.display = "none";
+modal2.style.display = "none";
 sıfırlatop();
 });

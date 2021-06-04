@@ -13,7 +13,7 @@ html {
 body {
  
  
-  background: url(oyun.jpg);
+  background: url('oyun.jpg');
   font-family: "Open Sans", sans-serif;
   
   font-size: 62.5%;
@@ -171,10 +171,56 @@ deste of Cards
   height: 7em;
   width: 7em;
 }
-/*
-To disable the color highlight if and img is clicked
-https://stackoverflow.com/questions/21107439/disable-or-change-firefoxs-element-image-highlight-color
-*/
+.modal2 {
+  /*Hidden by default */
+  display: none;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* Fallback color */
+  background-color: rgb(46, 61, 73);
+  /* With opacity */
+  background-color: rgba(46, 61, 73, 0.6);
+}
+/* Modal Content/Box */
+.modal2-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  /* 5% from the top and centered */
+  margin: 5% auto;
+  border: 0.8em solid #fc4;
+  padding-right: 2em;
+  width: 80%;
+}
+.modal2-img {
+  display: inline-block;
+  margin: 1em 0 1em;
+  width: 20em;
+}
+/* The Close Button */
+.close2 {
+  align-self: flex-end;
+  color: #28e;
+  font-size: 5em;
+}
+.close2:hover,
+.close2:focus {
+  color: #5cf;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sonbuton2.play-again-btn2{
+  background: #28e;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
 img {
   user-select: none;
   width: 6em;
@@ -194,13 +240,13 @@ img {
   visibility: visible;
 }
 .deste .card.eslesme {
-  background: #39d;
+  /* background: #39d; */
   visibility: hidden;
   cursor: default;
-  animation: pulse 1s;
+  /* animation: pulse 1s; */
 }
 .eslesme img {
-  background: #39d;
+   visibility: hidden;
 }
 
 
@@ -241,7 +287,20 @@ Desktops
   .modal-img {
     width: 30em;
   }
+  .modal2-content h2 {
+    font-size: 5em;
+  }
+  /* Modal Image*/
+  .modal2-img {
+    width: 30em;
+  }
   .play-again-btn {
+    font-size: 2em;
+    background: #28e;
+   margin-bottom: 1em;
+   cursor: pointer;
+  }
+  .play-again-btn2 {
     font-size: 2em;
     background: #28e;
    margin-bottom: 1em;
